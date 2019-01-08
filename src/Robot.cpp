@@ -4,6 +4,7 @@
 #include "Subsystems/REVDigitBoard.h"
 #include <SmartDashboard/SmartDashboard.h>
 #include <RobotController.h>
+
 std::unique_ptr<Autonomous> Robot::autonomousCommand;
 
 AutonomousChooser Robot::AutoChooser;
@@ -47,6 +48,20 @@ void Robot::AddSmartDashboardItems() {
 	SmartDashboard::PutNumber("Joystick Y", CommandBase::oi->getDriverJoystick()->GetY());
 	SmartDashboard::PutNumber("Left Trigger", CommandBase::oi->getDriverJoystick()->GetRawAxis(LEFT_TRIGGER));
 	SmartDashboard::PutNumber("Right Trigger", CommandBase::oi->getDriverJoystick()->GetRawAxis(RIGHT_TRIGGER));
+	SmartDashboard::PutNumber("rightcount", CommandBase::rightEncoder->getCount());
+	SmartDashboard::PutNumber("rightRaw Count", CommandBase::rightEncoder->getRaw());
+	SmartDashboard::PutNumber("rightDistance", CommandBase::rightEncoder->getDistance());
+	SmartDashboard::PutNumber("rightPeriod", CommandBase::rightEncoder->getPeriod()); //Deprecated
+	SmartDashboard::PutNumber("rightRate", CommandBase::rightEncoder->getRate());
+	SmartDashboard::PutBoolean("rightDirection", CommandBase::rightEncoder->getDirection());
+	SmartDashboard::PutBoolean("rightStopped", CommandBase::rightEncoder->getStopped());
+	SmartDashboard::PutNumber("leftcount", CommandBase::leftEncoder->getCount());
+	SmartDashboard::PutNumber("leftRaw Count", CommandBase::leftEncoder->getRaw());
+	SmartDashboard::PutNumber("leftDistance", CommandBase::leftEncoder->getDistance());
+	SmartDashboard::PutNumber("leftPeriod", CommandBase::leftEncoder->getPeriod()); //Deprecated
+	SmartDashboard::PutNumber("leftRate", CommandBase::leftEncoder->getRate());
+	SmartDashboard::PutBoolean("leftDirection", CommandBase::leftEncoder->getDirection());
+	SmartDashboard::PutBoolean("leftStopped", CommandBase::leftEncoder->getStopped());
 }
 
 START_ROBOT_CLASS(Robot)

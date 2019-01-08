@@ -21,7 +21,12 @@ void Drive::InitDefaultCommand() {
 	SetDefaultCommand(new DriveWithJoystick());
 }
 void Drive::takeInput() { //takes input from controller to drive robot in teleop
-	float X = CommandBase::oi->getDriverJoystick()->GetX() / 1.75;
+	float leftSpeed = -CommandBase::oi->getDriverJoystick()->GetRawAxis(1);
+	float rightSpeed = -CommandBase::oi->getDriverJoystick()->GetRawAxis(5);
+
+	Drive::setMotors(leftSpeed, rightSpeed);
+
+	/*float X = CommandBase::oi->getDriverJoystick()->GetX() / 1.75;
 	float Y = CommandBase::oi->getDriverJoystick()->GetY();
 
 	newGyro.update();
@@ -39,7 +44,7 @@ void Drive::takeInput() { //takes input from controller to drive robot in teleop
 
 	// Store these values for next time.
 	oldX = X;
-	oldY = Y;
+	oldY = Y;*/
 }
 
 

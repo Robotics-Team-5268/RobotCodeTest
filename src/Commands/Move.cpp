@@ -3,7 +3,7 @@
 Move::Move(float tm, float spd): CommandBase() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
-	Command::Requires(drive.get());
+	Requires(drive.get());
 	pid = nullptr;
 	seconds = tm;
 	speed = spd;
